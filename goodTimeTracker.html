@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<label for="goodTime">Progress till the good time's over:</label>
+<br/>
+<span id="goodTimeDigit"></span>
+<progress id="goodTime" max="100"></progress>
+<div id="daysRemaining"></div>
+<script>
+  goodTimeStart = new Date('2021/12/08')    
+  goodTimeFinish = new Date('2025/05/30')
+  today = new Date();
+  percentage = 100 * (today.getTime() - goodTimeStart.getTime()) / (goodTimeFinish.getTime() - goodTimeStart.getTime());
+  console.log(percentage);
+  goodTimeElement = document.getElementById("goodTime");
+  goodTimeElement.innerHTML = percentage;
+  goodTimeElement.value = percentage;
+  document.getElementById("goodTimeDigit").innerHTML = Math.round(percentage) + " %";
+  oneDay = 24 * 60 * 60 * 1000;
+  document.getElementById("daysRemaining").innerHTML = Math.round((goodTimeFinish.getTime() - today.getTime())/oneDay) + " good days remaining";  
+</script>
+</body>
+</html>
